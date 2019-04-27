@@ -1,0 +1,29 @@
+{% if users.length > 0 %}
+  {% for user in users %}
+    <h4 class="appointment-hour">{{user.hour}}</h4>
+    <img src="/images/baseline-schedule-24px.svg" />
+    <li class="provider">
+      <div style="display: inline-block;">
+        <img style=" margin-bottom: -20px;" src="/files/{{ user.user.avatar }}" />
+        <strong style="width:100%;">{{ user.user.name }}</strong><br>
+        <small style="width:100%;  margin-left: 67px;">{{ user.user.email }}</small>
+      </div>
+    </li>
+  {% endfor %}
+  <li class="provider">
+    <div>
+      <img src="/images/baseline-event_available-24px.svg" />
+      <strong style="width:100%;">Os demais horários estão disponíveis para agendamento.</strong><br>
+    </div>
+  </li>
+{% endif %}
+
+{% if users.length <= 0 %}
+  <li class="provider">
+    <div>
+      <img src="/images/baseline-event_available-24px.svg" />
+      <strong style="width:100%;">Todos os horários estão disponíveis para agendamento.</strong><br>
+    </div>
+  </li>
+{% endif %}
+

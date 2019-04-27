@@ -4,7 +4,7 @@
   <div class="content">
     <strong>Olá, {{user.name}}</strong>
     <p>Inicie um agendamento escolhendo um profissional abaixo: </p>
-
+    {% include "_partials/flash.njk" %}
     <ul class="providers">
     {% for provider in providers %}
       <li class="provider">
@@ -17,6 +17,10 @@
 
     {% endfor %}
     </ul>
+    {% if isProvider === 'true' %}
+      <p>Para checar os <b>agendamentos dos seus clientes</b> basta clicar no botão abaixo: </p>
+      <a href="/app/appointments/checked" class="btn-purple">Checar agendamentos</a>
+    {% endif %}
     <a href="/app/logout" class="logout">Sair</a>
   </div>
 {% endblock %}

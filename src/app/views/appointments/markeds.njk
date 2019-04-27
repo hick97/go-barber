@@ -1,0 +1,31 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+    <strong>Visualizar compromissos</strong>
+    <p>Escolha uma data para checar seus compromissos: </p>
+
+    <form>
+      <input type="text" class="flatpickr" placeholder="Escolha uma data" >
+
+      <div id="hours"></div>
+
+      <a href="/" class="return-button">Voltar</a>
+    </form>
+
+  </div>
+
+  <script type="text/javascript">
+    flatpickr('.flatpickr', {
+      minDate: new Date(),
+      dateFormat: 'd/m/Y',
+      onChange: function(date){
+        fetch(`/app/markeds/{{ provider.id }}?date=${ date[0].getTime() }`).then(function(response){
+          response.text().then(function(html){
+            document.getElementById('hours').innerHTML = html
+          })
+        })
+      }
+    })
+  </script>
+{% endblock %}

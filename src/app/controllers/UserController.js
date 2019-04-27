@@ -7,6 +7,7 @@ class UserController {
   async store (req, res) {
     // Encontro o filename no req.file
     const { filename: avatar } = req.file
+    // const { provider } = req.body.provider
 
     await User.create({ ...req.body, avatar })
 

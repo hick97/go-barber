@@ -20,9 +20,11 @@ class SessionController {
       return res.redirect('/')
     }
 
+    const isProvider = user.provider
+
     req.session.user = user
 
-    return res.redirect('/app/dashboard')
+    return res.redirect(`/app/dashboard/${isProvider}`)
   }
   async destroy (req, res) {
     req.session.destroy(() => {

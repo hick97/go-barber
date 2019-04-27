@@ -1,10 +1,10 @@
 const moment = require('moment')
 const { Op } = require('sequelize')
 
-const { Appointment } = require('../models')
+const { Appointment, User } = require('../models')
 
 class AvailableController {
-  async index (req, res) {
+  async checkingAvailable (req, res) {
     const date = moment(parseInt(req.query.date))
 
     const appointments = await Appointment.findAll({
@@ -50,6 +50,31 @@ class AvailableController {
     })
 
     return res.render('available/index', { available })
+  }
+  async checkingMarkeds (req, res) {
+    const date = moment(parseInt(req.query.date))
+
+    const appointments = await Appointment.findAll({
+      where: {
+        provider_id: req.params.provider,
+        date: {
+          [Op.between]: [
+            date.startOf('day').format(),
+            date.endOf('day').format()
+          ]
+        }
+      }
+    })
+
+    const users = []
+
+    for (var i = 0; i < Object.keys(appointments).length; i++) {
+      var user = await User.findByPk(appointments[i].user_id)
+      var hour = moment(appointments[i].date).format('HH:mm')
+      await users.push({ user, hour })
+    }
+
+    return res.render('available/provider', { users })
   }
 }
 
