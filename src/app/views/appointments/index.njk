@@ -1,0 +1,21 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+    <strong>Visualizar compromissos</strong>
+
+    {% for appointment in appointments %}
+      <h4 class="appointment-hour" style=" margin-bottom: 3px;" >{{appointment.date}} - ({{appointment.hour}})</h4>
+      <li class="provider" style=" margin-bottom: 0px;">
+        <div style="display: inline-block;">
+          <img style=" margin-bottom: -20px;" src="/files/{{ appointment.avatar }}" />
+          <strong style="width:100%; margin-left: 7px;">{{ appointment.name }}</strong><br>
+          <small style="width:100%;  margin-left: 57px;">{{ appointment.email }}</small>
+        </div>
+      </li>
+      <a href="/app/appointments/cancel/{{appointment.id}}" class="return-button" style=" margin-bottom: 10px;"> Cancelar </a>
+
+    {% endfor %}
+    <a href="/" class="btn-purple" style=" margin-bottom: 10px;"> Voltar </a>
+  </div>
+{% endblock %}

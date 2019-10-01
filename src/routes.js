@@ -33,10 +33,15 @@ routes.use('/app', authMiddleware)
 
 routes.get('/app/logout', SessionController.destroy)
 
+routes.get('/app/profile/:id', UserController.listUserById)
+routes.post('/app/update', UserController.update)
+
 routes.get('/app/dashboard/:isProvider', DashboardController.index)
 
+routes.get('/app/appointments', AppointmentController.listByUser)
 routes.get('/app/appointments/new/:provider', AppointmentController.create)
 routes.post('/app/appointments/new/:provider', AppointmentController.store)
+routes.get('/app/appointments/cancel/:id', AppointmentController.cancel)
 
 routes.get(
   '/app/appointments/checked',

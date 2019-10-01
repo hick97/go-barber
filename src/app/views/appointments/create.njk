@@ -6,9 +6,13 @@
     <p>Inicie um agendamento escolhendo um profissional abaixo: </p>
 
     <div class="provider">
+      <img src="/files/{{ provider.avatar }}" />
       <div>
-        <img src="/files/{{ provider.avatar }}" alt="" />
         <strong>{{ provider.name }}</strong>
+        {% if provider.price !== null %}
+          <small>Valor: {{ provider.price }}R$</small>
+        {% endif %}
+        <small>{{ provider.address}}</small>
       </div>
     </div>
 

@@ -1,0 +1,29 @@
+{% extends "_layouts/auth.njk" %}
+
+{% block body %}
+  <form action="/app/update" method="post">
+
+    <img src="/images/logo.svg" height="42"/>
+
+    {% include "_partials/flash.njk" %}
+    <p>Para uma melhor experiência recomendamos o preenchimento do endereço e preço <strong>(caso seja um prestador)</strong> </p>
+    <label>Nome</label>
+    <input type="text" name="name" placeholder="Insira seu nome" value="{{user.name}}">
+    <label>Email</label>
+    <input type="email" name="email" placeholder="Insira seu e-mail" value={{user.email}}>
+    <label>Senha atual</label>
+    <input type="password" name="oldPassword" placeholder="Insira sua senha atual" >
+    <label>Nova senha</label>
+    <input type="password" name="password" placeholder="Insira sua nova senha" >
+    <label>Endereço</label>
+    <input type="text" name="address" placeholder="Insira seu endereço" value="{{user.address}}">
+
+    {% if user.provider === true %}
+    <label>Preço (R$)</label>
+      <input type="number" name="price" placeholder="Preço (R$)" value={{user.price}}>
+    {% endif %}
+    <button type="submit"> Atualizar </button>
+    <a href="/" class="return-button">Cancelar</a>
+
+  </form>
+{% endblock %}

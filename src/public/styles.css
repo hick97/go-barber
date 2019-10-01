@@ -204,7 +204,7 @@ ul.providers {
 
 .provider div {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .provider img {
@@ -214,8 +214,8 @@ ul.providers {
 }
 
 .provider strong {
-  margin-left: 15px;
   color: #444;
+  margin-bottom: 2px;
 }
 
 .provider a {
@@ -274,6 +274,14 @@ ul.providers {
   width: 100%;
 }
 
+form p{
+  font-size: 14px;
+  color: #111;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
 .main-wrapper .content form button {
   width: 100%;
   height: 40px;
@@ -285,35 +293,51 @@ ul.providers {
   font-size: 14px;
   border: 0;
   color: #fff;
-  background: #7159c1;
+  background: #7159c1 !important;
   margin-top: 5px;
 }
 .return-button {
   width: 100%;
   height: 40px;
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
   font-weight: bold;
   font-size: 14px;
   border: 0;
-  color: #fff;
-  background: #de6d6d;
+  color: #fff !important;
+  background: #de6d6d !important;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.btn-green {
+  width: 100%;
+  height: 40px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  border: 0;
+  color: #fff !important;
+  background: #00b400;
   text-decoration: none;
   margin-top: 10px;
 }
 .btn-purple {
   width: 100%;
   height: 40px;
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
   font-weight: bold;
   font-size: 14px;
   border: 0;
-  color: #fff;
+  color: #fff !important;
   background: #7159c1;
   text-decoration: none;
   margin-top: 10px;
@@ -323,12 +347,17 @@ ul.providers {
   background: #634dac;
 }
 
+form label{
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
 .return-button:hover {
   background: #c15858;
 }
 
 .btn-green:hover {
-  background: #634dac;
+  background: #009000;
 }
 .subtitle-image {
   margin-bottom: -8px;
